@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      SwiftAid Navigator | Your Emergency Fund Path & Repayment Simulator
+    </title>
+    <meta
+      name="description"
+      content="Need urgent funds? SwiftAid Navigator helps you find the fastest emergency funding options and repayment plans tailored to your situation in under a minute. Get personalized solutions instantly."
+    />
+    <meta
+      name="keywords"
+      content="emergency loan, quick cash, fast loan, bad credit loan, instant money, repayment simulation, interest calculator, debt help, government aid, living expenses, swift aid"
+    />
+
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+
+    <style>
+      /* CSS styles go here */
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f7f6;
+        color: #333;
+      }
+      .container {
+        max-width: 800px;
+        margin: 40px auto;
+        padding: 20px;
+        background-color: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      }
+      header {
+        text-align: center;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #eee;
+      }
+      header h1 {
+        color: #007bff;
+        font-size: 2.5em;
+        margin-bottom: 10px;
+      }
+      header p {
+        color: #555;
+        font-size: 1.1em;
+        line-height: 1.6;
+      }
+      .section-title {
+        font-size: 1.8em;
+        color: #007bff;
+        margin-top: 30px;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+      label {
+        font-weight: bold;
+        margin-bottom: 5px;
+        display: block;
+      }
+      input[type="number"],
+      select,
+      input[type="text"] {
+        padding: 12px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 1em;
+        width: 100%;
+        box-sizing: border-box;
+      }
+      button {
+        background-color: #007bff;
+        color: white;
+        padding: 15px 20px;
+        border: none;
+        border-radius: 5px;
+        font-size: 1.1em;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+      .result-box {
+        background-color: #e9f7ff;
+        border: 1px solid #cce5ff;
+        padding: 20px;
+        border-radius: 8px;
+        margin-top: 30px;
+      }
+      .result-box h3 {
+        color: #007bff;
+        margin-top: 0;
+      }
+      .result-box p {
+        line-height: 1.6;
+        margin-bottom: 10px;
+      }
+      .warning {
+        color: #dc3545;
+        font-size: 0.9em;
+        margin-top: 10px;
+      }
+      footer {
+        text-align: center;
+        margin-top: 40px;
+        padding-top: 20px;
+        border-top: 1px solid #eee;
+        color: #777;
+        font-size: 0.9em;
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        .container {
+          margin: 20px;
+          padding: 15px;
+        }
+        header h1 {
+          font-size: 2em;
+        }
+        .section-title {
+          font-size: 1.5em;
+        }
+        button {
+          padding: 12px 15px;
+          font-size: 1em;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>💰 SwiftAid Navigator</h1>
+        <p>
+          Need urgent cash? Find the best emergency funding options and a clear
+          repayment plan tailored to your situation, right now.
+        </p>
+      </header>
+
+      <h2 class="section-title">
+        1-Minute Diagnosis: Find Your Optimal Fund Path
+      </h2>
+      <form id="fundGuidanceForm">
+        <div>
+          <label for="fundPurpose">Purpose of Funds:</label>
+          <select id="fundPurpose" required>
+            <option value="">Select an option</option>
+            <option value="medical">Medical Bills/Healthcare</option>
+            <option value="living">Living Expenses/Food</option>
+            <option value="education">Tuition/Education</option>
+            <option value="rent">Rent/Housing</option>
+            <option value="business">Business Capital</option>
+            <option value="debt">Debt Repayment</option>
+            <option value="etc">Other (e.g., emergencies, repairs)</option>
+          </select>
+        </div>
+        <div>
+          <label for="fundAmount">Amount Needed (USD):</label>
+          <input
+            type="number"
+            id="fundAmount"
+            placeholder="e.g., 1000"
+            min="10"
+            required
+          />
+        </div>
+        <div>
+          <label for="repaymentPeriod"
+            >Estimated Repayment Period (Months):</label
+          >
+          <input
+            type="number"
+            id="repaymentPeriod"
+            placeholder="e.g., 6"
+            min="1"
+            required
+          />
+        </div>
+        <div>
+          <label for="currentCreditScore"
+            >Current Credit Score (e.g., 300-850):</label
+          >
+          <input
+            type="number"
+            id="currentCreditScore"
+            placeholder="Leave blank if unknown"
+            min="300"
+            max="850"
+          />
+          <p class="warning">
+            If you don't know your exact credit score, you can leave this blank.
+            General information will be provided.
+          </p>
+        </div>
+        <button type="submit">Find My Funding Path</button>
+      </form>
+
+      <div id="result" class="result-box" style="display: none">
+        <h3>✨ Your Recommended Emergency Funding Method</h3>
+        <div id="recommendationContent"></div>
+        <h3 style="margin-top: 25px">📈 Estimated Repayment Simulation</h3>
+        <div id="simulationContent"></div>
+      </div>
+
+      <h2 class="section-title">Frequently Asked Questions (FAQ)</h2>
+      <div class="faq-section">
+        <details>
+          <summary>Q. What types of emergency funds are available?</summary>
+          <p>
+            A. Emergency funds typically include small personal loans, credit
+            card cash advances, government assistance programs (like welfare or
+            unemployment benefits), and payday loans. Each option has different
+            conditions and interest rates, so careful comparison is key.
+          </p>
+        </details>
+        <details>
+          <summary>Q. Can I get a loan with a low credit score?</summary>
+          <p>
+            A. Yes, even with a low credit score, there are options like
+            government-backed programs or specific lenders specializing in
+            subprime loans. Our simulation considers these options when
+            providing recommendations.
+          </p>
+        </details>
+        <details>
+          <summary>Q. Is the repayment simulation accurate?</summary>
+          <p>
+            A. Our simulation is an estimate based on general interest rates and
+            common repayment structures. Actual interest rates, fees, and
+            repayment terms can vary significantly between financial
+            institutions. Always confirm directly with the lender before
+            finalizing any decision.
+          </p>
+        </details>
+      </div>
+    </div>
+
+    <footer>
+      <p>&copy; 2025 SwiftAid Navigator. All rights reserved.</p>
+      <p>
+        Disclaimer: This service provides financial guidance and is for
+        informational purposes only. Users are solely responsible for actual
+        financial product contracts. All information should be used as a
+        reference only.
+      </p>
+    </footer>
+
+    <script>
+      // JavaScript code goes here
+      document.addEventListener("DOMContentLoaded", () => {
+        const form = document.getElementById("fundGuidanceForm");
+        const resultDiv = document.getElementById("result");
+        const recommendationContent = document.getElementById(
+          "recommendationContent"
+        );
+        const simulationContent = document.getElementById("simulationContent");
+
+        // Load previous input values from local storage (security: exclude PII)
+        const savedPurpose = localStorage.getItem("swiftaid_purpose");
+        const savedAmount = localStorage.getItem("swiftaid_amount");
+        const savedPeriod = localStorage.getItem("swiftaid_period");
+        const savedCredit = localStorage.getItem("swiftaid_credit");
+
+        if (savedPurpose)
+          document.getElementById("fundPurpose").value = savedPurpose;
+        if (savedAmount)
+          document.getElementById("fundAmount").value = savedAmount;
+        if (savedPeriod)
+          document.getElementById("repaymentPeriod").value = savedPeriod;
+        if (savedCredit)
+          document.getElementById("currentCreditScore").value = savedCredit;
+
+        // If values are saved, display results immediately upon revisiting
+        if (savedPurpose && savedAmount && savedPeriod) {
+          displayResults(
+            savedPurpose,
+            parseFloat(savedAmount),
+            parseInt(savedPeriod),
+            savedCredit ? parseInt(savedCredit) : null
+          );
+        }
+
+        form.addEventListener("submit", (event) => {
+          event.preventDefault(); // Prevent form submission
+
+          const fundPurpose = document.getElementById("fundPurpose").value;
+          const fundAmount = parseFloat(
+            document.getElementById("fundAmount").value
+          );
+          const repaymentPeriod = parseInt(
+            document.getElementById("repaymentPeriod").value
+          );
+          const currentCreditScore = document.getElementById(
+            "currentCreditScore"
+          ).value
+            ? parseInt(document.getElementById("currentCreditScore").value)
+            : null;
+
+          // Save input values to local storage (security: exclude PII)
+          localStorage.setItem("swiftaid_purpose", fundPurpose);
+          localStorage.setItem("swiftaid_amount", fundAmount);
+          localStorage.setItem("swiftaid_period", repaymentPeriod);
+          if (currentCreditScore !== null) {
+            localStorage.setItem("swiftaid_credit", currentCreditScore);
+          } else {
+            localStorage.removeItem("swiftaid_credit"); // Remove if no value
+          }
+
+          displayResults(
+            fundPurpose,
+            fundAmount,
+            repaymentPeriod,
+            currentCreditScore
+          );
+        });
+
+        function displayResults(purpose, amount, period, creditScore) {
+          let recommendation = "";
+          let simulation = "";
+          let annualInterestRate = 0; // Initial interest rate
+
+          // 1. Emergency Fund Recommendation Logic (simplified)
+          if (amount <= 1000 && (creditScore === null || creditScore >= 600)) {
+            // Under $1000, credit score 600+ or unknown
+            recommendation += `<p><strong>Small Personal Loan (Emergency Loan)</strong>: Easily apply through banking apps; typically offers lower interest rates for small amounts.</p>`;
+            annualInterestRate = 0.08; // 8% assumed
+          } else if (amount <= 5000 && creditScore >= 700) {
+            // Under $5000, credit score 700+
+            recommendation += `<p><strong>Bank Personal Loan</strong>: Explore personal loan products from major banks. These may offer more favorable interest rates.</p>`;
+            annualInterestRate = 0.07; // 7% assumed
+          } else if (amount > 5000 && creditScore >= 700) {
+            // Over $5000, credit score 700+
+            recommendation += `<p><strong>Bank Loans / Secured Loans</strong>: For larger amounts, consider various bank loan products or secured loans (e.g., home equity, auto title) if applicable.</p>`;
+            annualInterestRate = 0.06; // 6% assumed
+          } else if (creditScore !== null && creditScore < 600) {
+            // Low credit score
+            recommendation += `<p><strong>Government-Backed Programs / Subprime Lenders</strong>: If your credit score is low or income is limited, look into government assistance programs or lenders specializing in lower credit scores. Resources like community financial services can provide information.</p>`;
+            annualInterestRate = 0.12; // 12% assumed
+          } else {
+            recommendation += `<p><strong>Explore Various Options</strong>: Depending on the amount and period needed, options like credit card advances, payday loans, or P2P lending might be available. Carefully compare the terms and interest rates of each.</p>`;
+            annualInterestRate = 0.15; // 15% assumed (higher risk)
+          }
+
+          // 2. Repayment Simulation
+          if (amount > 0 && period > 0) {
+            const monthlyInterestRate = annualInterestRate / 12;
+            let monthlyPayment;
+
+            if (monthlyInterestRate === 0) {
+              monthlyPayment = amount / period;
+            } else {
+              // Formula for fixed monthly payment (annuity)
+              monthlyPayment =
+                (amount *
+                  (monthlyInterestRate *
+                    Math.pow(1 + monthlyInterestRate, period))) /
+                (Math.pow(1 + monthlyInterestRate, period) - 1);
+            }
+            const totalPayment = monthlyPayment * period;
+            const totalInterest = totalPayment - amount;
+
+            simulation += `<p>Loan Principal: $${amount.toLocaleString()}</p>`;
+            simulation += `<p>Estimated Monthly Payment: $${monthlyPayment.toLocaleString(
+              undefined,
+              { maximumFractionDigits: 2 }
+            )}</p>`;
+            simulation += `<p>Total Repayment: $${totalPayment.toLocaleString(
+              undefined,
+              { maximumFractionDigits: 2 }
+            )}</p>`;
+            simulation += `<p>Total Interest: $${totalInterest.toLocaleString(
+              undefined,
+              { maximumFractionDigits: 2 }
+            )}</p>`;
+            simulation += `<p class="warning"><strong>*This simulation is a simple calculation based on an estimated annual interest rate of ${(
+              annualInterestRate * 100
+            ).toFixed(
+              1
+            )}%. Actual terms, fees, and interest rates may vary significantly by financial institution and product.</strong></p>`;
+          } else {
+            simulation += `<p>Please enter the amount needed and repayment period for an accurate simulation.</p>`;
+          }
+
+          recommendationContent.innerHTML = recommendation;
+          simulationContent.innerHTML = simulation;
+          resultDiv.style.display = "block"; // Show result section
+        }
+      });
+    </script>
+  </body>
+</html>
