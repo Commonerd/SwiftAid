@@ -4,11 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
-      SwiftAid Navigator | Your Emergency Fund Path & Repayment Simulator
+      SwiftFundAid Navigator | Your Emergency Fund Path & Repayment Simulator
     </title>
     <meta
       name="description"
-      content="Need urgent funds? SwiftAid Navigator helps you find the fastest emergency funding options and repayment plans tailored to your situation in under a minute. Get personalized solutions instantly."
+      content="Need urgent funds? SwiftFundAid Navigator helps you find the fastest emergency funding options and repayment plans tailored to your situation in under a minute. Get personalized solutions instantly."
     />
     <meta
       name="keywords"
@@ -143,7 +143,7 @@
   <body>
     <div class="container">
       <header>
-        <h1>💰 SwiftAid Navigator</h1>
+        <h1>💰 SwiftFundAid Navigator</h1>
         <p>
           Need urgent cash? Find the best emergency funding options and a clear
           repayment plan tailored to your situation, right now.
@@ -249,7 +249,7 @@
     </div>
 
     <footer>
-      <p>&copy; 2025 SwiftAid Navigator. All rights reserved.</p>
+      <p>&copy; 2025 SwiftFundAid Navigator. All rights reserved.</p>
       <p>
         Disclaimer: This service provides financial guidance and is for
         informational purposes only. Users are solely responsible for actual
@@ -269,10 +269,10 @@
         const simulationContent = document.getElementById("simulationContent");
 
         // Load previous input values from local storage (security: exclude PII)
-        const savedPurpose = localStorage.getItem("swiftaid_purpose");
-        const savedAmount = localStorage.getItem("swiftaid_amount");
-        const savedPeriod = localStorage.getItem("swiftaid_period");
-        const savedCredit = localStorage.getItem("swiftaid_credit");
+        const savedPurpose = localStorage.getItem("swiftfundaid_purpose");
+        const savedAmount = localStorage.getItem("swiftfundaid_amount");
+        const savedPeriod = localStorage.getItem("swiftfundaid_period");
+        const savedCredit = localStorage.getItem("swiftfundaid_credit");
 
         if (savedPurpose)
           document.getElementById("fundPurpose").value = savedPurpose;
@@ -310,13 +310,13 @@
             : null;
 
           // Save input values to local storage (security: exclude PII)
-          localStorage.setItem("swiftaid_purpose", fundPurpose);
-          localStorage.setItem("swiftaid_amount", fundAmount);
-          localStorage.setItem("swiftaid_period", repaymentPeriod);
+          localStorage.setItem("swiftfundaid_purpose", fundPurpose);
+          localStorage.setItem("swiftfundaid_amount", fundAmount);
+          localStorage.setItem("swiftfundaid_period", repaymentPeriod);
           if (currentCreditScore !== null) {
-            localStorage.setItem("swiftaid_credit", currentCreditScore);
+            localStorage.setItem("swiftfundaid_credit", currentCreditScore);
           } else {
-            localStorage.removeItem("swiftaid_credit"); // Remove if no value
+            localStorage.removeItem("swiftfundaid_credit"); // Remove if no value
           }
 
           displayResults(

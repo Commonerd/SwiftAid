@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://swiftaid.netlify.app/sitemap.xml
+Sitemap: https://swiftfundaid.netlify.app/sitemap.xml
